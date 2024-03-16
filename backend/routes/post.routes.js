@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/create", protectRoute, createPost);
 router.get("/", protectRoute, getPosts);
-router.get("/post/:id", protectRoute, getPost);
+router.get("/:id", protectRoute, getPost);
 router.put("/update/:id", protectRoute, updatePost);
 router.delete("/destroy/:id", protectRoute, destroyPost);
 

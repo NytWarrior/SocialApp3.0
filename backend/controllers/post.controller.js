@@ -1,7 +1,28 @@
 import Post from "../models/post.model.js";
 
 export const createPost = async (req, res) => {
-    console.log("createPost");
+    try {
+        // console.log(req)
+        // console.log("content", req.body.content);
+        // console.log("image", req.body.imgUrl);
+        // console.log("video", req.body.videoUrl);
+        const newPost = new Post({
+            content: req.body.content,
+            image: req.body.imgUrl,
+            video: req.body.videoUrl,
+        });
+        // console.log(newPost);
+        if (newPost) {
+            await newPost.save();
+            res.status(201).json({ message: "Post created successfully", data: newPost });
+
+        } else {
+            res.status(400).json({ error: "Invalid post data" });
+        }
+    } catch (error) {
+        console.log("Error in Create post controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 };
 
 export const getPost = async (req, res) => {
@@ -9,7 +30,15 @@ export const getPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
-    console.log("getPosts");
+    // console.log("getPosts");
+    try {
+        const posts = await Post.find().sort({ createdAt: -1 });
+        res.status(200).json({ data: posts });
+
+    } catch (error) {
+        console.log("Error in logout controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 };
 
 export const destroyPost = async (req, res) => {
