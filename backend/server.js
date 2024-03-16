@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
 import postRoutes from "./routes/post.routes.js";
+import commentRoutes from "./routes/comment.routes.js";
+import likeRoutes from "./routes/like.routes.js";
+import messageRoutes from "./routes/message.routes.js";
 
 const app = express();
 
@@ -15,6 +18,9 @@ app.use(cookieParser());    //to parse the cookie
 
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/comment", commentRoutes);
+app.use("/api/like", likeRoutes);
+app.use("/api/message", messageRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!!");
