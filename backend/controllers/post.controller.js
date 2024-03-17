@@ -10,6 +10,7 @@ export const createPost = async (req, res) => {
             content: req.body.content,
             image: req.body.imgUrl,
             video: req.body.videoUrl,
+            user: req.user._id
         });
         // console.log(newPost);
         if (newPost) {
@@ -32,7 +33,7 @@ export const getPost = async (req, res) => {
 export const getPosts = async (req, res) => {
     // console.log("getPosts");
     try {
-        const posts = await Post.find().sort({ createdAt: -1 });
+        const posts = await Post.find().sort({ createdAt: -1 }).populate('user');
         res.status(200).json({ data: posts });
 
     } catch (error) {
