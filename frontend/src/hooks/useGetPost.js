@@ -22,7 +22,7 @@ const useGetPost = () => {
         getPosts();
     }, []);
 
-    return { loading, data: posts }; // Return loading state as well
+    return { loading, posts }; // Return loading state as well
 };
 
 export default useGetPost;

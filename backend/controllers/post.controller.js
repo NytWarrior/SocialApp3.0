@@ -34,7 +34,7 @@ export const getPosts = async (req, res) => {
     // console.log("getPosts");
     try {
         const posts = await Post.find().sort({ createdAt: -1 }).populate('user');
-        res.status(200).json({ data: posts });
+        res.status(200).json(posts);
 
     } catch (error) {
         console.log("Error in logout controller", error.message);

@@ -37,9 +37,14 @@ const useCreatePost = () => {
             // console.log("content", content);
             // console.log("image", image);
             // console.log("video", video);
-
-            const imgUrl = await uploadFile('image', image);
-            const videoUrl = await uploadFile('video', video);
+            let imgUrl = '';
+            let videoUrl = '';
+            if (image) {
+                imgUrl = await uploadFile('image', image);
+            }
+            if (video) {
+                videoUrl = await uploadFile('video', video);
+            }
 
             // Post URLs to backend
             const res = await axios.post('/api/post/create', { content, imgUrl, videoUrl });

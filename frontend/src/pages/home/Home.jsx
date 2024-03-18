@@ -8,15 +8,9 @@ const Home = () => {
         image: null,
         video: null,
     });
-    const [posts, setPosts] = useState([]);
-    const { loading: postLoading, createPost } = useCreatePost();
-    const { loading: getPostLoading, data } = useGetPost();
 
-    useEffect(() => {
-        if (data) {
-            setPosts(data.data || []);
-        }
-    }, [data]);
+    const { loading: postLoading, createPost } = useCreatePost();
+    const { loading: getPostLoading, posts } = useGetPost();
 
 
     const handleSubmit = async (e) => {
@@ -37,6 +31,9 @@ const Home = () => {
         }
     };
 
+    const handleDeletePost = async (postId) => {
+        // console.log('Deleting post', postId)
+    };
 
     return (
         <div className='flex flex-col w-screen h-full'>
@@ -87,7 +84,6 @@ const Home = () => {
                 </div>
             </div>
 
-
             <div>
                 <div className='text-black'>Posts</div>
 
@@ -96,8 +92,6 @@ const Home = () => {
                 ) : (
                     <div className='flex flex-col items-center justify-center w-1/2 mx-auto'>
                         <div className='w-full rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-
-                            {console.log(posts)}
                             {posts.length > 0 ? (
                                 posts.map((post) => (
                                     <div key={post._id} className='my-4'>
@@ -111,16 +105,12 @@ const Home = () => {
                                                         <p className="text-gray-500 text-sm">Posted 2 hours ago</p>
                                                     </div>
                                                 </div>
-                                                <div className="text-gray-500 cursor-pointer">
-                                                    {/* <!-- Three-dot menu icon --> */}
-                                                    <button className="hover:bg-gray-50 rounded-full p-1">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                            <circle cx="12" cy="7" r="1" />
-                                                            <circle cx="12" cy="12" r="1" />
-                                                            <circle cx="12" cy="17" r="1" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
+                                                <button onClick={() => handleDeletePost(post._id)} className="hover:bg-gray-900 rounded-full p-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+
                                             </div>
                                             {/* <!-- Message --> */}
                                             <div className="mb-4">
@@ -147,7 +137,6 @@ const Home = () => {
                                                     </div>
                                                 )}
                                             </div>
-
 
                                             {/* <!-- Like and Comment Section --> */}
                                             <div className="flex items-center justify-between text-gray-500">
@@ -177,12 +166,10 @@ const Home = () => {
                                 <div>No posts found.</div>
                             )}
                         </div>
-                    </div >
+                    </div>
                 )}
-
-            </div >
-
-        </div >
+            </div>
+        </div>
     );
 };
 
