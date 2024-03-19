@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useCreatePost from '../../hooks/useCreatePost';
 import useGetPost from '../../hooks/useGetPost';
 import useGetUsers from '../../hooks/useGetUsers';
+import useDeletePost from '../../hooks/useDeletePost';
 
 const Home = () => {
     const [inputs, setInputs] = useState({
@@ -13,8 +14,7 @@ const Home = () => {
     const { loading: postLoading, createPost } = useCreatePost();
     const { loading: getPostLoading, posts } = useGetPost();
     const { loading: getUserLoading, users } = useGetUsers();
-
-    console.log("Users", users)
+    const { deletePost } = useDeletePost();
 
 
     const handleSubmit = async (e) => {
@@ -26,6 +26,7 @@ const Home = () => {
         };
         await createPost(postData);
         setInputs({ content: '', image: null, video: null });
+        window.location.reload();
     };
 
     const handleSlideChange = (targetId) => {
@@ -36,7 +37,9 @@ const Home = () => {
     };
 
     const handleDeletePost = async (postId) => {
-        // console.log('Deleting post', postId)
+        console.log('Deleting post', postId)
+        await deletePost(postId);
+        window.location.reload();
     };
 
     return (

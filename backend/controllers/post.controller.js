@@ -43,7 +43,18 @@ export const getPosts = async (req, res) => {
 };
 
 export const destroyPost = async (req, res) => {
-    console.log("destroyPost");
+    // console.log("destroyPost");
+    try {
+        const post = await Post.deleteOne({ _id: req.params.id });
+        if (post) {
+            res.status(200).json({ message: "Post deleted successfully" });
+        } else {
+            res.status(400).json({ error: "Invalid post data" });
+        }
+    } catch (error) {
+        console.log("Error in destroy post controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 };
 
 export const updatePost = async (req, res) => {
