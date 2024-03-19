@@ -7,6 +7,7 @@ import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import likeRoutes from "./routes/like.routes.js";
 import messageRoutes from "./routes/message.routes.js";
+import usersRoutes from "./routes/user.routes.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 app.use("/api/like", likeRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/users", usersRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!!");
