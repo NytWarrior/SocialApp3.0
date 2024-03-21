@@ -17,6 +17,8 @@ const useSendRequest = () => {
             }
         } catch (error) {
             toast.error(error.message);
+        } finally {
+            window.location.reload();
         }
     }
     return { sendRequest };

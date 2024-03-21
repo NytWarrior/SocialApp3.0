@@ -46,10 +46,38 @@ export const sendFriendRequest = async (req, res) => {
     }
 };
 
-export const acceptFriendRequest = async (friendId) => {
-    console.log("acceptFriendRequest: ", friendId);
+export const acceptFriendRequest = async (req, res) => {
+    // console.log("acceptFriendRequest: ", friendId);
+    try {
+        const { id: id } = req.params;
+        const friend = await Friend.findOne({ _id: id });
+        if (friend) {
+            friend.status = "accepted";
+            await friend.save();
+            res.status(200).json({ message: "Friend request accepted successfully" });
+        } else {
+            res.status(400).json({ error: "Invalid friend request data" });
+        }
+    } catch (error) {
+        console.log("Error in acceptFriendRequest controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+
 };
 
-export const rejectFriendRequest = async (friendId) => {
-    console.log("rejectFriendRequest: ", friendId);
+export const rejectFriendRequest = async (req, res) => {
+    // console.log("rejectFriendRequest: ", friendId);
+    try {
+        const { id: id } = req.params;
+        const friend = await Friend.findOne({ _id: id });
+        if (friend) {
+            await Friend.deleteOne({ _id: id });
+            res.status(200).json({ message: "Friend request rejected successfully" });
+        } else {
+            res.status(400).json({ error: "Invalid friend request data" });
+        }
+    } catch (error) {
+        console.log("Error in rejectFriendRequest controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 };
