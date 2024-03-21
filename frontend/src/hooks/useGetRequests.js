@@ -12,8 +12,8 @@ const useGetRequests = () => {
             setLoading(true);
             try {
                 const res = await axios.get("/api/friend/requests");
-                setReqSent(res.data.requestsRec || []);
-                setReqRec(res.data.requestsSent || []);
+                setReqRec(res.data.requestsRec || []);
+                setReqSent(res.data.requestsSent || []);
                 // console.log(res.data.requestsSent);
                 // console.log(reqSent);
                 // console.log(reqRec);

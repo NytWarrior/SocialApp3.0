@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className='min-h-screen flex items-center justify-center'>
+      <div className='min-h-screen flex'>
         <Routes>
           <Route path='/' element={authUser ? <Home /> : <Navigate to={'/login'} />} />
           <Route path='/friends' element={authUser ? <Friends /> : <Navigate to={'/login'} />} />

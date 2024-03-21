@@ -1,3 +1,5 @@
+import Friend from "../models/friend.model.js";
+
 export const getAllFriends = async () => {
     console.log("getAllFriends");
 };
@@ -19,11 +21,11 @@ export const getAllRequests = async (req, res) => {
 export const sendFriendRequest = async (req, res) => {
 
     try {
-        console.log(req);
+        // console.log(req);
         const { id: receiverId } = req.params;
         const senderId = req.user._id;
-        console.log("sendFriendRequest: ", receiverId);
-        console.log("sendFriendRequest: ", senderId);
+        // console.log("sendFriendRequest: ", receiverId);
+        // console.log("sendFriendRequest: ", senderId);
 
         const newFriendRequest = new Friend({
             from_user: senderId,
