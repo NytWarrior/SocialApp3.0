@@ -3,6 +3,7 @@ import Recommendation from '../../components/sidebar/Recommendation';
 import useGetRequests from '../../hooks/useGetRequests';
 import useAcceptRequest from '../../hooks/useAcceptRequest';
 import useRejectRequest from '../../hooks/useRejectRequest';
+import { Link } from 'react-router-dom';
 
 const Friends = () => {
     const { loading, reqSent, reqRec } = useGetRequests();
@@ -26,8 +27,9 @@ const Friends = () => {
                                     <div key={req._id} >
                                         <div className='flex justify-between gap-x-6 py-5 px-8 '>
                                             <div className="flex min-w-0 gap-x-4">
-                                                <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={req.from_user.profilePic} alt="User Avatar" />                                             <div className="min-w-0 flex-auto">
-                                                    <p className="font-semibold leading-6 text-white-800">{req.from_user.fullName}</p>
+                                                <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={req.from_user.profilePic} alt="User Avatar" />
+                                                <div className="min-w-0 flex-auto">
+                                                    <Link to={`/profile/${req.from_user.username}`} className="font-semibold leading-6 text-white-800">{req.from_user.fullName}</Link>
                                                     <p className="mt-1 truncate text-sm leading-5 text-gray-500">{req.from_user.username}</p>
                                                 </div>
                                             </div>
@@ -59,7 +61,7 @@ const Friends = () => {
                                         <div className='flex justify-between gap-x-6 py-5 px-8 '>
                                             <div className="flex min-w-0 gap-x-4">
                                                 <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={req.to_user.profilePic} alt="User Avatar" />                                             <div className="min-w-0 flex-auto">
-                                                    <p className="font-semibold leading-6 text-white-800">{req.to_user.fullName}</p>
+                                                    <Link to={`/profile/${req.to_user.username}`} className="font-semibold leading-6 text-white-800">{req.to_user.fullName}</Link>
                                                     <p className="mt-1 truncate text-sm leading-5 text-gray-500">{req.to_user.username}</p>
                                                 </div>
                                             </div>

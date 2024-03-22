@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import SignUp from './pages/signup/Signup';
 import { useAuthContext } from './context/AuthContext';
 import Friends from './pages/friends/Friends';
+import Profile from './pages/profile/Profile';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <div className='min-h-screen flex'>
         <Routes>
           <Route path='/' element={authUser ? <Home /> : <Navigate to={'/login'} />} />
+          <Route path='/profile/:username' element={authUser ? <Profile /> : <Navigate to={'/login'} />} />
           <Route path='/friends' element={authUser ? <Friends /> : <Navigate to={'/login'} />} />
           <Route path='/login' element={authUser ? <Navigate to={'/'} /> : <Login />} />
           <Route path='/signup' element={authUser ? <Navigate to={'/'} /> : <SignUp />} />
