@@ -15,12 +15,12 @@ const Friends = () => {
 
             <Menu />
 
-            <div className='flex flex-col w-2/4 h-full'>
+            <div className='flex flex-col mt-10 w-3/5 p-6 h-full shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
                 {loading ? (
                     <div>Loading requests...</div>
                 ) : (
                     <div className='flex flex-col items-center justify-center w-full mx-auto'>
-                        <div className='w-full rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+                        <div className='w-full rounded-lg '>
                             <div className='text-white p-3'><h1>Friend Request Receieved</h1></div>
                             {reqRec.length > 0 ? (
                                 reqRec.map((req) => (
