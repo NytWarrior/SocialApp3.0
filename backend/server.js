@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
@@ -9,6 +10,8 @@ import likeRoutes from "./routes/like.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import usersRoutes from "./routes/user.routes.js";
 import friendRoutes from "./routes/friend.routes.js";
+
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -26,8 +29,14 @@ app.use("/api/message", messageRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/friend", friendRoutes);
 
-app.get("/", (req, res) => {
-    res.send("Hello World!!");
+// app.get("/", (req, res) => {
+//     res.send("Hello World!!");
+// });
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
