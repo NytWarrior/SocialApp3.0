@@ -46,9 +46,9 @@ const Home = () => {
         <div className='flex justify-around'>
 
             <Menu />
-            <div className='flex flex-col w-2/4 h-full'>
-                <div className='flex flex-col items-center justify-center w-full mx-auto'>
-                    <div className='w-full rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+            <div className='flex flex-col w-3/5 mt-12 p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+                <div className='flex flex-col items-center justify-center w-full mx-auto '>
+                    <div className='w-4/5'>
                         <form onSubmit={handleSubmit}>
                             <div className='mb-4'>
                                 <label className='block text-base label-text'>Post</label>

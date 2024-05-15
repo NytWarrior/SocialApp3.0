@@ -7,7 +7,7 @@ const Navbar = () => {
     const { loading, logout } = useLogout();
 
     return (
-        <header className="body-font sticky top-0 z-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
+        <header className="body-font fixed top-0 z-10 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 w-full" >
             <div className="container mx-auto flex justify-between p-3  md:flex-row  w-full ">
                 <Link href="/" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@ const Navbar = () => {
                     <span className="ml-3 text-xl">SocialApp</span>
                 </Link>
                 {authUser && (
-                    <div className='absolute right-2'>
+                    <div className=''>
                         {!loading ? (
                             <button onClick={logout} className="inline-flex items-center text-white border-0 py-1 px-2 mx-2 my-1 focus:outline-none hover:text-black rounded">Logout
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">

@@ -9,9 +9,9 @@ const Recommendation = () => {
     const { sendRequest } = useSendRequest();
 
     return (
-        <div className="w-1/4 h-full p-6 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 fixed right-0">
+        <div className="w-1/5 h-full top-10 p-6 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 fixed right-0">
             {/* Users List */}
-            <div className='text-white'><h1>Recommended Users</h1></div>
+            {/* <div className='text-white'><h1>Recommended Users</h1></div> */}
 
             {users.length > 0 ? (
                 users.map((user) => (

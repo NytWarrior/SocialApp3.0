@@ -27,6 +27,11 @@ export const sendFriendRequest = async (req, res) => {
         // console.log("sendFriendRequest: ", receiverId);
         // console.log("sendFriendRequest: ", senderId);
 
+        const existingRequest = await Friend.findOne({ from_user: senderId, to_user: receiverId });
+        if (existingRequest) {
+            return res.status(400).json({ error: "Friend request already sent" });
+        }
+
         const newFriendRequest = new Friend({
             from_user: senderId,
             to_user: receiverId

@@ -6,9 +6,9 @@ const Menu = () => {
     const { authUser } = useAuthContext();
 
     return (
-        <div className="w-1/4 h-full p-6 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 left-0 fixed">
+        <div className="w-1/5 top-10 h-full p-6 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 left-0 fixed">
 
-            <div className='text-white'><h1>Menu</h1></div>
+            {/* <div className='text-white'><h1>Menu</h1></div> */}
             <div className="flex items-center justify-between p-4">
                 <Link to='/' className="flex items-center space-x-2 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
