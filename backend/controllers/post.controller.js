@@ -30,6 +30,18 @@ export const getPost = async (req, res) => {
     console.log("getPost");
 };
 
+export const getMyPosts = async (req, res) => {
+    // console.log("getMyPosts");
+    try {
+        const posts = await Post.find({ user: req.user._id }).sort({ createdAt: -1 }).populate('user');
+        res.status(200).json(posts);
+
+    } catch (error) {
+        console.log("Error in logout controller", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
 export const getPosts = async (req, res) => {
     // console.log("getPosts");
     try {
