@@ -8,6 +8,7 @@ import { useAuthContext } from './context/AuthContext';
 import Friends from './pages/friends/Friends';
 import Profile from './pages/profile/Profile';
 import MyPosts from './pages/myPosts/MyPosts';
+import Settings from './pages/settings/Settings';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/login' element={authUser ? <Navigate to={'/'} /> : <Login />} />
           <Route path='/signup' element={authUser ? <Navigate to={'/'} /> : <SignUp />} />
           <Route path='/my-posts' element={authUser ? <MyPosts /> : <Navigate to={'/login'} />} />
+          <Route path='/settings' element={authUser ? <Settings /> : <Navigate to={'/login'} />} />
         </Routes>
       </div>
       <Footer />
